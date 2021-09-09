@@ -5,8 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TODO_List.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="600">
+        Title="Simple TODO List" Height="450" Width="600">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="37*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <ListBox Grid.ColumnSpan="4" Margin="20">
+        </ListBox>
+        <Button Content="Add TODO" Grid.Row="1" Grid.Column="3" Margin="20 0 20 20"/>
+        <Button Content="Delete TODO" Grid.Row="1" Grid.Column="2" Margin="20 0 20 20"/>
+        <Button Content="Edit TODO" Grid.Row="1" Grid.Column="1" Margin="20 0 20 20"/>
     </Grid>
 </Window>
