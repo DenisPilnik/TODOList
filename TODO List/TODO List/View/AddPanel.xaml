@@ -1,0 +1,25 @@
+﻿<Window x:Class="TODO_List.View.AddPanel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TODO_List.View"
+        mc:Ignorable="d"
+        Title="Add new task" ResizeMode="NoResize" Height="250" Width="250">
+    <Grid DataContext="{Binding AddPanelViewModel, Source={StaticResource Locator}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="20">
+            <Label FontSize="15" Content="Write the task : "/>
+            <TextBox Text="{Binding TaskString, Mode=TwoWay}" FontSize="15"/>
+        </StackPanel>
+        <Button Command="{Binding AddTask}" Content="Add Task" Grid.Column="1" Grid.Row="1" Margin="20 0 20 20"/>
+        <Button Command="{Binding Cancel}" Content="Cancel" Grid.Row="1" Margin="20 0 20 20"/>
+    </Grid>
+</Window>

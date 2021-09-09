@@ -1,13 +1,12 @@
-using EnvDTE;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
 using TODO_List.Models;
+using TODO_List.View;
 
 namespace TODO_List.ViewModel
 {
@@ -15,6 +14,7 @@ namespace TODO_List.ViewModel
     {
         public List<Chalange> chalangeList = new List<Chalange>();
         public ICommand AddTask { get; private set; }
+        public ICommand EditTask { get; private set; }
         public ICommand DeleteTask { get; private set; }
         Chalange selectedChalange { get; set; }
         public Chalange SelectedChalange
@@ -37,7 +37,7 @@ namespace TODO_List.ViewModel
         }
         public MainViewModel()
         {
-            AddTask = new RelayCommand(AddNewTask);
+            AddTask = new RelayCommand(OpenAddNewTaskPanel);
             DeleteTask = new RelayCommand(DeleteSelectedTask);
         }
 
@@ -51,13 +51,20 @@ namespace TODO_List.ViewModel
             });
         }
 
-        private async void AddNewTask()
+        public static async void AddNewTask(MainViewModel mainPanel, string taskString)
         {
             await Task.Run(() =>
             {
-                App.Current.Dispatcher.Invoke(delegate { chalangeList.Add(ChallangeCreator.AddChallange(chalangeList.Count)); });
-                RaisePropertyChanged(() => ChalangeList);
+                App.Current.Dispatcher.Invoke(delegate { mainPanel.chalangeList.Add(ChallangeCreator.AddChallange(taskString)); });
+                mainPanel.RaisePropertyChanged(() => mainPanel.ChalangeList);
             });
+        }
+
+        private void OpenAddNewTaskPanel()
+        {
+            AddPanel _addPanel = new AddPanel();
+            AddPanelViewModel.InitData(this, _addPanel);
+            _addPanel.Show();
         }
     }
 }

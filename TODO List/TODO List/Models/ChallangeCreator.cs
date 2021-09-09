@@ -9,9 +9,9 @@ namespace TODO_List.Models
 {
     public static class ChallangeCreator
     {
-        public static Chalange AddChallange(int challangeCount)
+        public static Chalange AddChallange(string text)
         {
-            Chalange chalange = new Chalange() { TaskName = $"{challangeCount + 1}", TaskСompleteness = false };
+            Chalange chalange = new Chalange() { TaskName = text, TaskСompleteness = false };
             return chalange;
         }
     }
