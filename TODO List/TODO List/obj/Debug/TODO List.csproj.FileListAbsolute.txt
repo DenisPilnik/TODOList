@@ -2,14 +2,27 @@ C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\bin\Debug\TODO List.exe
 C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\bin\Debug\TODO List.exe
 C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\bin\Debug\TODO List.pdb
 C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\obj\Debug\TODO List.csproj.AssemblyReference.cache
-C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\obj\Debug\MainWindow.g.cs
 C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\obj\Debug\App.g.cs
 C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\obj\Debug\TODO List_MarkupCompile.cache
 C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\obj\Debug\TODO List_MarkupCompile.lref
-C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\obj\Debug\MainWindow.baml
 C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\obj\Debug\TODO List.g.resources
 C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\obj\Debug\TODO_List.Properties.Resources.resources
 C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\obj\Debug\TODO List.csproj.GenerateResource.cache
 C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\obj\Debug\TODO List.csproj.CoreCompileInputs.cache
 C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\obj\Debug\TODO List.exe
 C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\obj\Debug\TODO List.pdb
+C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\bin\Debug\CommonServiceLocator.dll
+C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\bin\Debug\GalaSoft.MvvmLight.dll
+C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\bin\Debug\GalaSoft.MvvmLight.Extras.dll
+C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\bin\Debug\GalaSoft.MvvmLight.Platform.dll
+C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\bin\Debug\GalaSoft.MvvmLight.pdb
+C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\bin\Debug\GalaSoft.MvvmLight.xml
+C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\bin\Debug\GalaSoft.MvvmLight.Extras.pdb
+C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\bin\Debug\GalaSoft.MvvmLight.Extras.xml
+C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\bin\Debug\GalaSoft.MvvmLight.Platform.pdb
+C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\bin\Debug\GalaSoft.MvvmLight.Platform.xml
+C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\obj\Debug\View\MainWindow.g.cs
+C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\obj\Debug\App.baml
+C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\obj\Debug\View\MainWindow.baml
+C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\obj\Debug\TODO List.csproj.CopyComplete
