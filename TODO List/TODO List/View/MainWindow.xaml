@@ -17,7 +17,7 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ListBox Grid.ColumnSpan="4" Margin="20" ItemsSource="{Binding ChalangeList}">
+        <ListBox SelectedItem="{Binding SelectedChalange, Mode=TwoWay}" Grid.ColumnSpan="4" Margin="20" ItemsSource="{Binding ChalangeList}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <CheckBox IsChecked="{Binding TaskСompleteness}" Content="{Binding TaskName}"/>
@@ -25,7 +25,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <Button Command="{Binding AddTask}" Content="Add task" Grid.Row="1" Grid.Column="3" Margin="20 0 20 20"/>
-        <Button Content="Delete task" Grid.Row="1" Grid.Column="2" Margin="20 0 20 20"/>
+        <Button Command="{Binding DeleteTask}" Content="Delete task" Grid.Row="1" Grid.Column="2" Margin="20 0 20 20"/>
         <Button Content="Edit task" Grid.Row="1" Grid.Column="1" Margin="20 0 20 20"/>
     </Grid>
 </Window>

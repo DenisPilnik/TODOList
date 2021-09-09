@@ -1,3 +1,4 @@
+using EnvDTE;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System;
@@ -10,23 +11,23 @@ using TODO_List.Models;
 
 namespace TODO_List.ViewModel
 {
-    /// <summary>
-    /// This class contains properties that the main View can data bind to.
-    /// <para>
-    /// Use the <strong>mvvminpc</strong> snippet to add bindable properties to this ViewModel.
-    /// </para>
-    /// <para>
-    /// You can also use Blend to data bind with the tool's support.
-    /// </para>
-    /// <para>
-    /// See http://www.galasoft.ch/mvvm
-    /// </para>
-    /// </summary>
     public class MainViewModel : ViewModelBase
     {
         public List<Chalange> chalangeList = new List<Chalange>();
         public ICommand AddTask { get; private set; }
-        public ICommand Test { get; private set; }
+        public ICommand DeleteTask { get; private set; }
+        Chalange selectedChalange { get; set; }
+        public Chalange SelectedChalange
+        {
+            get
+            {
+                return selectedChalange;
+            }
+            set
+            {
+                selectedChalange = value;
+            }
+        }
         public ObservableCollection<Chalange> ChalangeList
         {
             get
@@ -37,12 +38,17 @@ namespace TODO_List.ViewModel
         public MainViewModel()
         {
             AddTask = new RelayCommand(AddNewTask);
-            Test = new RelayCommand(TestFunc);
+            DeleteTask = new RelayCommand(DeleteSelectedTask);
         }
 
-        private void TestFunc()
+        private async void DeleteSelectedTask()
         {
-            int selectedItem = ChalangeList.IndexOf(SelectedItem);
+            await Task.Run(() =>
+            {
+                chalangeList.Remove(selectedChalange);
+                selectedChalange = null;
+                RaisePropertyChanged(() => ChalangeList);
+            });
         }
 
         private async void AddNewTask()
