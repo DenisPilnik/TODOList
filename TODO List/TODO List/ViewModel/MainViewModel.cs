@@ -1,4 +1,12 @@
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
+using TODO_List.Models;
 
 namespace TODO_List.ViewModel
 {
@@ -16,19 +24,34 @@ namespace TODO_List.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
-        /// <summary>
-        /// Initializes a new instance of the MainViewModel class.
-        /// </summary>
+        public List<Chalange> chalangeList = new List<Chalange>();
+        public ICommand AddTask { get; private set; }
+        public ICommand Test { get; private set; }
+        public ObservableCollection<Chalange> ChalangeList
+        {
+            get
+            {
+                return new ObservableCollection<Chalange>(chalangeList);
+            }
+        }
         public MainViewModel()
         {
-            ////if (IsInDesignMode)
-            ////{
-            ////    // Code runs in Blend --> create design time data.
-            ////}
-            ////else
-            ////{
-            ////    // Code runs "for real"
-            ////}
+            AddTask = new RelayCommand(AddNewTask);
+            Test = new RelayCommand(TestFunc);
+        }
+
+        private void TestFunc()
+        {
+            int selectedItem = ChalangeList.IndexOf(SelectedItem);
+        }
+
+        private async void AddNewTask()
+        {
+            await Task.Run(() =>
+            {
+                App.Current.Dispatcher.Invoke(delegate { chalangeList.Add(ChallangeCreator.AddChallange(chalangeList.Count)); });
+                RaisePropertyChanged(() => ChalangeList);
+            });
         }
     }
 }

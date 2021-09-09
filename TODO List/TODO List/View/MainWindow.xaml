@@ -3,10 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TODO_List.ViewModel"
+        xmlns:local="clr-namespace:TODO_List"
         mc:Ignorable="d"
         Title="Simple TODO List" Height="450" Width="600">
-    <Grid>
+    <Grid DataContext="{Binding MainViewModel, Source={StaticResource Locator}}">
         <Grid.RowDefinitions>
             <RowDefinition Height="37*"/>
             <RowDefinition Height="5*"/>
@@ -17,10 +17,15 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ListBox Grid.ColumnSpan="4" Margin="20">
+        <ListBox Grid.ColumnSpan="4" Margin="20" ItemsSource="{Binding ChalangeList}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <CheckBox IsChecked="{Binding TaskСompleteness}" Content="{Binding TaskName}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
         </ListBox>
-        <Button Content="Add TODO" Grid.Row="1" Grid.Column="3" Margin="20 0 20 20"/>
-        <Button Content="Delete TODO" Grid.Row="1" Grid.Column="2" Margin="20 0 20 20"/>
-        <Button Content="Edit TODO" Grid.Row="1" Grid.Column="1" Margin="20 0 20 20"/>
+        <Button Command="{Binding AddTask}" Content="Add task" Grid.Row="1" Grid.Column="3" Margin="20 0 20 20"/>
+        <Button Content="Delete task" Grid.Row="1" Grid.Column="2" Margin="20 0 20 20"/>
+        <Button Content="Edit task" Grid.Row="1" Grid.Column="1" Margin="20 0 20 20"/>
     </Grid>
 </Window>

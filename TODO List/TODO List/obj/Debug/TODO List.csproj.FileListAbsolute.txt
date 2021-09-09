@@ -26,3 +26,4 @@ C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\obj\Debug\View\MainWind
 C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\obj\Debug\App.baml
 C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\obj\Debug\View\MainWindow.baml
 C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\obj\Debug\TODO List.csproj.CopyComplete
+C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\obj\Debug\GeneratedInternalTypeHelper.g.cs
