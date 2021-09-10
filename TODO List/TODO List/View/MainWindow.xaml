@@ -26,6 +26,6 @@
         </ListBox>
         <Button Command="{Binding AddTask}" Content="Add task" Grid.Row="1" Grid.Column="3" Margin="20 0 20 20"/>
         <Button Command="{Binding DeleteTask}" Content="Delete task" Grid.Row="1" Grid.Column="2" Margin="20 0 20 20"/>
-        <Button Content="Edit task" Grid.Row="1" Grid.Column="1" Margin="20 0 20 20"/>
+        <Button Command="{Binding EditTask}" Content="Edit task" Grid.Row="1" Grid.Column="1" Margin="20 0 20 20"/>
     </Grid>
 </Window>

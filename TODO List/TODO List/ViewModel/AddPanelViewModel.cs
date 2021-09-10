@@ -40,7 +40,7 @@ namespace TODO_List.ViewModel
             AddPanel = addPanel;
         }
 
-        private void CancelCreateNewTask()
+        private void CancelCreateNewTask() 
         {
             AddPanel.Close();
         }
@@ -48,6 +48,7 @@ namespace TODO_List.ViewModel
         private void AddNewTask()
         {
             MainViewModel.AddNewTask(MainViewModel, taskString);
+            TaskString = String.Empty;
             CancelCreateNewTask();
         }
     }

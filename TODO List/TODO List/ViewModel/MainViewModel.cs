@@ -39,6 +39,14 @@ namespace TODO_List.ViewModel
         {
             AddTask = new RelayCommand(OpenAddNewTaskPanel);
             DeleteTask = new RelayCommand(DeleteSelectedTask);
+            EditTask = new RelayCommand(EditSelectedTask);
+        }
+
+        private void EditSelectedTask()
+        {
+            EditPanel editPanel = new EditPanel();
+            EditTaskViewModel.InitData(this, editPanel);
+            editPanel.Show();
         }
 
         private async void DeleteSelectedTask()
@@ -51,12 +59,21 @@ namespace TODO_List.ViewModel
             });
         }
 
-        public static async void AddNewTask(MainViewModel mainPanel, string taskString)
+        public static async void AddNewTask(MainViewModel mainView, string taskString)
         {
             await Task.Run(() =>
             {
-                App.Current.Dispatcher.Invoke(delegate { mainPanel.chalangeList.Add(ChallangeCreator.AddChallange(taskString)); });
-                mainPanel.RaisePropertyChanged(() => mainPanel.ChalangeList);
+                App.Current.Dispatcher.Invoke(delegate { mainView.chalangeList.Add(ChallangeCreator.AddChallange(taskString)); });
+                mainView.RaisePropertyChanged(() => mainView.ChalangeList);
+            });
+        }
+
+        public static async void EditSelectedTask(MainViewModel mainView, string taskString)
+        {
+            await Task.Run(() =>
+            {
+                App.Current.Dispatcher.Invoke(delegate { mainView.ChalangeList[mainView.ChalangeList.IndexOf(mainView.SelectedChalange)].TaskName = taskString; });
+                mainView.RaisePropertyChanged(() => mainView.ChalangeList);
             });
         }
 

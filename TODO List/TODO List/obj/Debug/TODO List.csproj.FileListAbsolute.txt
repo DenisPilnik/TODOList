@@ -29,3 +29,5 @@ C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\obj\Debug\TODO List.csp
 C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\obj\Debug\View\AddPanel.g.cs
 C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\obj\Debug\View\AddPanel.baml
+C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\obj\Debug\View\EditPanel.g.cs
+C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\obj\Debug\View\EditPanel.baml

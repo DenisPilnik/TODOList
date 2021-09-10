@@ -22,6 +22,7 @@ namespace TODO_List.ViewModel
 
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<AddPanelViewModel>();
+            SimpleIoc.Default.Register<EditTaskViewModel>();
             Messenger.Default.Register<NotificationMessage>(this, NotifyUserMethod);
         }
 
@@ -45,7 +46,14 @@ namespace TODO_List.ViewModel
                 return ServiceLocator.Current.GetInstance<AddPanelViewModel>();
             }
         }
-        
+        public EditTaskViewModel EditTaskViewModel
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<EditTaskViewModel>();
+            }
+        }
+
         public static void Cleanup()
         {
             // TODO Clear the ViewModels

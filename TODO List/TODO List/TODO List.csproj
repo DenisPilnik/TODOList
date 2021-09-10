@@ -86,9 +86,14 @@
     <Compile Include="Models\Chalange.cs" />
     <Compile Include="Models\ChallangeCreator.cs" />
     <Compile Include="ViewModel\AddPanelViewModel.cs" />
+    <Compile Include="ViewModel\EditTaskViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="View\AddPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EditPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -102,6 +107,9 @@
     </Compile>
     <Compile Include="View\AddPanel.xaml.cs">
       <DependentUpon>AddPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditPanel.xaml.cs">
+      <DependentUpon>EditPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
