@@ -31,3 +31,5 @@ C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\obj\Debug\View\AddPanel
 C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\obj\Debug\View\AddPanel.baml
 C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\obj\Debug\View\EditPanel.g.cs
 C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\obj\Debug\View\EditPanel.baml
+C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\bin\Debug\VelocityDb.dll
+C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\bin\Debug\VelocityDb.xml

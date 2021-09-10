@@ -41,6 +41,19 @@ namespace TODO_List.ViewModel
             AddTask = new RelayCommand(OpenAddNewTaskPanel);
             DeleteTask = new RelayCommand(DeleteSelectedTask);
             EditTask = new RelayCommand(EditSelectedTask);
+            LoadTaskMethod();
+        }
+
+        private void LoadTaskMethod()
+        {
+            chalangeList.Clear();
+            DataBase.VelocityWorker.GetChalangeFromDb().ForEach(delegate(Chalange chalange){
+                Task.Run(() =>
+                {
+                    App.Current.Dispatcher.Invoke(delegate { chalangeList.Add(chalange); });
+                    RaisePropertyChanged(() => ChalangeList);
+                });
+            }); 
         }
 
         private void EditSelectedTask()
@@ -50,24 +63,22 @@ namespace TODO_List.ViewModel
             editPanel.Show();
         }
 
-        private async void DeleteSelectedTask()
+        private void DeleteSelectedTask()
         {
-            await Task.Run(() =>
+            DataBase.VelocityWorker.DeleteChalangeFromDb(SelectedChalange);
+            /*await Task.Run(() =>
             {
                 chalangeList.Remove(selectedChalange);
                 SelectedChalange = null;
                 RaisePropertyChanged(() => SelectedChalange);
                 RaisePropertyChanged(() => ChalangeList);
-            });
+            });*/
         }
 
-        public static async void AddNewTask(MainViewModel mainView, string taskString)
+        public static void AddNewTask(MainViewModel mainView, string taskString)
         {
-            await Task.Run(() =>
-            {
-                App.Current.Dispatcher.Invoke(delegate { mainView.chalangeList.Add(ChallangeCreator.AddChallange(taskString)); });
-                mainView.RaisePropertyChanged(() => mainView.ChalangeList);
-            });
+            DataBase.VelocityWorker.AddNewTask(ChallangeCreator.AddChallange(taskString));
+            mainView.LoadTaskMethod();
         }
 
         public static async void EditSelectedTask(MainViewModel mainView, string taskString)
