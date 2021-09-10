@@ -83,6 +83,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\SelectedConverter.cs" />
     <Compile Include="Models\Chalange.cs" />
     <Compile Include="Models\ChallangeCreator.cs" />
     <Compile Include="ViewModel\AddPanelViewModel.cs" />

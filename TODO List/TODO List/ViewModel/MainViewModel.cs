@@ -26,6 +26,7 @@ namespace TODO_List.ViewModel
             set
             {
                 selectedChalange = value;
+                RaisePropertyChanged(() => SelectedChalange);
             }
         }
         public ObservableCollection<Chalange> ChalangeList
@@ -54,7 +55,8 @@ namespace TODO_List.ViewModel
             await Task.Run(() =>
             {
                 chalangeList.Remove(selectedChalange);
-                selectedChalange = null;
+                SelectedChalange = null;
+                RaisePropertyChanged(() => SelectedChalange);
                 RaisePropertyChanged(() => ChalangeList);
             });
         }
@@ -76,7 +78,6 @@ namespace TODO_List.ViewModel
                 mainView.RaisePropertyChanged(() => mainView.ChalangeList);
             });
         }
-
         private void OpenAddNewTaskPanel()
         {
             AddPanel _addPanel = new AddPanel();
