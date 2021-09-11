@@ -24,7 +24,7 @@
         <ListBox SelectedItem="{Binding SelectedChalange, Mode=TwoWay}" Grid.ColumnSpan="4" Margin="20" ItemsSource="{Binding ChalangeList}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <CheckBox  IsChecked="{Binding TaskСompleteness, Converter={StaticResource SelectedItem}, Mode=TwoWay}" Content="{Binding TaskName}"/>
+                    <CheckBox IsChecked="{Binding TaskСompleteness}" Content="{Binding TaskName}"/>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -44,12 +45,6 @@ namespace TODO_List.ViewModel
             EditTask = new RelayCommand(EditSelectedTask);
             LoadTaskMethod();
         }
-
-        private void CompleteTaskMethod()
-        {
-            
-        }
-
         private void LoadTaskMethod()
         {
             chalangeList.Clear();
