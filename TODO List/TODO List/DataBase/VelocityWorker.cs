@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using TODO_List.Models;
-using VelocityDb;
 using VelocityDb.Session;
+
 
 namespace TODO_List.DataBase
 {
@@ -49,18 +47,58 @@ namespace TODO_List.DataBase
         }
         public static void DeleteChalangeFromDb(Chalange chalange)
         {
-            //TODO Создать систему id
-            using(SessionNoServer session = new SessionNoServer(systemDir))
+            using (SessionNoServer session = new SessionNoServer(systemDir))
             {
                 try
                 {
                     session.BeginUpdate();
-                    session.DeleteObject((ulong)session.AllObjects<Chalange>().ToList().IndexOf();
+                    session.DeleteObject(session.AllObjects<Chalange>().ToList().First(x => x.TaskName == chalange.TaskName).Id);
                     session.Commit();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     session.Abort();
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+        public static void ChangeCompletness(Chalange chalange, bool completness)
+        {
+            using (SessionNoServer session = new SessionNoServer(systemDir))
+            {
+                try
+                {
+                    session.TraceIndexUsage = true;
+                    session.BeginUpdate();
+                    Chalange ch = (from aChalange in session.AllObjects<Chalange>() where aChalange.TaskName == chalange.TaskName select aChalange).First();
+                    ch.TaskСompleteness = completness;
+                    session.UpdateObject(ch);
+                    session.Commit();
+                }
+                catch (Exception ex)
+                {
+                    session.Abort();
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+        public static void EditChalange(string taskString, Chalange chalange)
+        {
+            using(SessionNoServer session = new SessionNoServer(systemDir))
+            {
+                try
+                {
+                    session.TraceIndexUsage = true;
+                    session.BeginUpdate();
+                    Chalange ch = (from aChalange in session.AllObjects<Chalange>() where aChalange.TaskName == chalange.TaskName select aChalange).First();
+                    ch.TaskName = taskString;
+                    session.UpdateObject(ch);
+                    session.Commit();
+                }
+                catch (Exception ex)
+                {
+                    session.Abort();
+                    MessageBox.Show(ex.Message);
                 }
             }
         }

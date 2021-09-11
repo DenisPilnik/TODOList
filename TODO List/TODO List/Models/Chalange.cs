@@ -1,17 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using VelocityDb;
 
 namespace TODO_List.Models
 {
-    public class Chalange
+    public class Chalange : OptimizedPersistable
     {
         private string taskName;
-        private bool taskСompleteness;
+        public bool taskСompleteness;
 
         public string TaskName { get => taskName; set => taskName = value; }
-        public bool TaskСompleteness { get => taskСompleteness; set => taskСompleteness = value; }
+        public bool TaskСompleteness
+        {
+            get
+            {
+                return taskСompleteness;
+            }
+            set
+            {
+                taskСompleteness = value;
+            }
+        }
     }
 }

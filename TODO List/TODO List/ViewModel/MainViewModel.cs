@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using TODO_List.Models;
 using TODO_List.View;
@@ -44,6 +45,11 @@ namespace TODO_List.ViewModel
             LoadTaskMethod();
         }
 
+        private void CompleteTaskMethod()
+        {
+            
+        }
+
         private void LoadTaskMethod()
         {
             chalangeList.Clear();
@@ -66,13 +72,7 @@ namespace TODO_List.ViewModel
         private void DeleteSelectedTask()
         {
             DataBase.VelocityWorker.DeleteChalangeFromDb(SelectedChalange);
-            /*await Task.Run(() =>
-            {
-                chalangeList.Remove(selectedChalange);
-                SelectedChalange = null;
-                RaisePropertyChanged(() => SelectedChalange);
-                RaisePropertyChanged(() => ChalangeList);
-            });*/
+            LoadTaskMethod();
         }
 
         public static void AddNewTask(MainViewModel mainView, string taskString)
@@ -81,13 +81,10 @@ namespace TODO_List.ViewModel
             mainView.LoadTaskMethod();
         }
 
-        public static async void EditSelectedTask(MainViewModel mainView, string taskString)
+        public static void EditSelectedTask(MainViewModel mainView, string taskString)
         {
-            await Task.Run(() =>
-            {
-                App.Current.Dispatcher.Invoke(delegate { mainView.ChalangeList[mainView.ChalangeList.IndexOf(mainView.SelectedChalange)].TaskName = taskString; });
-                mainView.RaisePropertyChanged(() => mainView.ChalangeList);
-            });
+            DataBase.VelocityWorker.EditChalange(taskString, mainView.SelectedChalange);
+            mainView.LoadTaskMethod();
         }
         private void OpenAddNewTaskPanel()
         {
