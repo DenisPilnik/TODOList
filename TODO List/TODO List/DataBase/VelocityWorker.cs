@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows;
 using TODO_List.Models;
 using VelocityDb.Session;
 
@@ -43,6 +42,7 @@ namespace TODO_List.DataBase
                     session.Abort();
                 }
             }
+            chalanges.Sort((x, y) => x.Id.CompareTo(y.Id));
             return chalanges;
         }
         public static void DeleteChalangeFromDb(Chalange chalange)
@@ -55,14 +55,13 @@ namespace TODO_List.DataBase
                     session.DeleteObject(session.AllObjects<Chalange>().ToList().First(x => x.TaskName == chalange.TaskName).Id);
                     session.Commit();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     session.Abort();
-                    MessageBox.Show(ex.Message);
                 }
             }
         }
-        public static void ChangeCompletness(Chalange chalange, bool completness)
+        public static void UpdateChalangeList(List<Chalange> chalanges)
         {
             using (SessionNoServer session = new SessionNoServer(systemDir))
             {
@@ -70,15 +69,17 @@ namespace TODO_List.DataBase
                 {
                     session.TraceIndexUsage = true;
                     session.BeginUpdate();
-                    Chalange ch = (from aChalange in session.AllObjects<Chalange>() where aChalange.TaskName == chalange.TaskName select aChalange).First();
-                    ch.TaskСompleteness = completness;
-                    session.UpdateObject(ch);
+                    foreach(Chalange chalange in chalanges)
+                    {                       
+                        Chalange ch = (from aChalange in session.AllObjects<Chalange>() where aChalange.TaskName == chalange.TaskName select aChalange ).First();
+                        ch.TaskСompleteness = chalange.TaskСompleteness;
+                        session.UpdateObject(ch);
+                    }
                     session.Commit();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     session.Abort();
-                    MessageBox.Show(ex.Message);
                 }
             }
         }
@@ -95,10 +96,9 @@ namespace TODO_List.DataBase
                     session.UpdateObject(ch);
                     session.Commit();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     session.Abort();
-                    MessageBox.Show(ex.Message);
                 }
             }
         }

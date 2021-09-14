@@ -3,33 +3,39 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TODO_List"
+        xmlns:localViewModel="clr-namespace:TODO_List.ViewModel"
         xmlns:converters="clr-namespace:TODO_List.Converters"
         mc:Ignorable="d"
-        Title="Simple TODO List" Height="450" Width="600">
-    <Window.Resources>
+        Title="Simple TODO List" Height="450" Width="600" localViewModel:WindowCloser.EnableWindowClosing="True">
+    <Window.DataContext>
+        <localViewModel:MainViewModel/>
+    </Window.DataContext>
+    <Window.Resources >
         <converters:SelectedConverter x:Key="SelectedItem"/>
     </Window.Resources>
-    <Grid DataContext="{Binding MainViewModel, Source={StaticResource Locator}}">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="37*"/>
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="148*"/>
+            <ColumnDefinition Width="149*"/>
+            <ColumnDefinition Width="149*"/>
+            <ColumnDefinition Width="118*"/>
+            <ColumnDefinition Width="30*"/>
         </Grid.ColumnDefinitions>
-        <ListBox SelectedItem="{Binding SelectedChalange, Mode=TwoWay}" Grid.ColumnSpan="4" Margin="20" ItemsSource="{Binding ChalangeList}">
+        <ListBox HorizontalAlignment="Stretch" SelectedItem="{Binding SelectedChalange, Mode=TwoWay}" Grid.ColumnSpan="5" Margin="20,20,19.6,19.6" ItemsSource="{Binding ChalangeList, Mode=TwoWay}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <CheckBox IsChecked="{Binding TaskСompleteness}" Content="{Binding TaskName}"/>
+                    <Grid>
+                        <CheckBox IsChecked="{Binding TaskСompleteness}" Content="{Binding TaskName}" />
+                    </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Command="{Binding AddTask}" Content="Add task" Grid.Row="1" Grid.Column="3" Margin="20 0 20 20"/>
-        <Button Visibility="{Binding SelectedChalange, Converter={StaticResource SelectedItem}, FallbackValue=Hidden}" Command="{Binding DeleteTask}" Content="Delete task" Grid.Row="1" Grid.Column="2" Margin="20 0 20 20"/>
-        <Button Visibility="{Binding SelectedChalange, Converter={StaticResource SelectedItem}, FallbackValue=Hidden}" Command="{Binding EditTask}" Content="Edit task" Grid.Row="1" Grid.Column="1" Margin="20 0 20 20"/>
+        <Button Command="{Binding AddTask}" Content="Add task" Grid.Row="1" Grid.Column="3" Margin="20.4,0.4,19.6,20" Grid.ColumnSpan="2"/>
+        <Button Visibility="{Binding SelectedChalange, Converter={StaticResource SelectedItem}, FallbackValue=Hidden}" Command="{Binding DeleteTask}" Content="Delete task" Grid.Row="1" Grid.Column="2" Margin="20.2,0.4,19.6,20"/>
+        <Button Visibility="{Binding SelectedChalange, Converter={StaticResource SelectedItem}, FallbackValue=Hidden}" Command="{Binding EditTask}" Content="Edit task" Grid.Row="1" Grid.Column="1" Margin="20,0.4,19.8,20"/>
     </Grid>
 </Window>

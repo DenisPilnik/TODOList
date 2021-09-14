@@ -33,3 +33,6 @@ C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\obj\Debug\View\EditPane
 C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\obj\Debug\View\EditPanel.baml
 C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\bin\Debug\VelocityDb.dll
 C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\bin\Debug\VelocityDb.xml
+C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\bin\Debug\Prism.dll
+C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\bin\Debug\Prism.pdb
+C:\Users\Denis\source\repos\TODOList\TODO List\TODO List\bin\Debug\Prism.xml

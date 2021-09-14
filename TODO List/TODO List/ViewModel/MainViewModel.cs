@@ -1,43 +1,44 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using Prism.Commands;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
 using TODO_List.Models;
 using TODO_List.View;
+using TODO_List.View.Interface;
 
 namespace TODO_List.ViewModel
 {
-    public class MainViewModel : ViewModelBase
+    public class MainViewModel : ViewModelBase, ICloseWindows
     {
-        public List<Chalange> chalangeList = new List<Chalange>();
+        private List<Chalange> chalangeList = new List<Chalange>();
+        public ObservableCollection<Chalange> ChalangeList
+        {
+            get => new ObservableCollection<Chalange>(chalangeList);
+            set => chalangeList = value.ToList();
+        }
         public ICommand AddTask { get; private set; }
         public ICommand EditTask { get; private set; }
         public ICommand DeleteTask { get; private set; }
         Chalange selectedChalange { get; set; }
         public Chalange SelectedChalange
         {
-            get
-            {
-                return selectedChalange;
-            }
+            get => selectedChalange;
             set
             {
                 selectedChalange = value;
                 RaisePropertyChanged(() => SelectedChalange);
             }
         }
-        public ObservableCollection<Chalange> ChalangeList
-        {
-            get
-            {
-                return new ObservableCollection<Chalange>(chalangeList);
-            }
-        }
+        public Action Close { get; set; }
+
+        private DelegateCommand _onClose;
+        public DelegateCommand OnClose => _onClose ?? (_onClose = new DelegateCommand(CloseCommand));
+
         public MainViewModel()
         {
             AddTask = new RelayCommand(OpenAddNewTaskPanel);
@@ -47,6 +48,7 @@ namespace TODO_List.ViewModel
         }
         private void LoadTaskMethod()
         {
+            DataBase.VelocityWorker.UpdateChalangeList(ChalangeList.ToList());
             chalangeList.Clear();
             DataBase.VelocityWorker.GetChalangeFromDb().ForEach(delegate(Chalange chalange){
                 Task.Run(() =>
@@ -56,11 +58,11 @@ namespace TODO_List.ViewModel
                 });
             }); 
         }
-
         private void EditSelectedTask()
         {
+            EditTaskViewModel editTaskViewModel = new EditTaskViewModel();
             EditPanel editPanel = new EditPanel();
-            EditTaskViewModel.InitData(this, editPanel);
+            editTaskViewModel.InitData(this, editPanel);
             editPanel.Show();
         }
 
@@ -86,6 +88,16 @@ namespace TODO_List.ViewModel
             AddPanel _addPanel = new AddPanel();
             AddPanelViewModel.InitData(this, _addPanel);
             _addPanel.Show();
+        }
+        void CloseCommand()
+        {
+            Close?.Invoke();
+        }
+
+        public bool CanClose()
+        {
+            DataBase.VelocityWorker.UpdateChalangeList(ChalangeList.ToList());
+            return true;
         }
     }
 }

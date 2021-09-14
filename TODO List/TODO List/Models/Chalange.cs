@@ -1,4 +1,6 @@
-﻿using VelocityDb;
+﻿using System;
+using System.Windows.Data;
+using VelocityDb;
 
 namespace TODO_List.Models
 {
@@ -16,8 +18,10 @@ namespace TODO_List.Models
             }
             set
             {
-                taskСompleteness = value;
+                taskСompleteness = value;  
             }
         }
+
+        public void test(Object obj, DataTransferEventArgs arg) { } 
     }
 }
